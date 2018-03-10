@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 	$("#submit").click(function(){
-
 		var username = $("#username").val();
 		var password = $("#password").val();
 
@@ -10,7 +9,7 @@ $(document).ready(function(){
 		var stars = 0; //All stars in reps of user
 		var forks = 0; //All forks in reps of user
 		var followers = 0;
-		var commits = 0;
+		//var commits = 0;
 		var repos = 0;
 
 		$.ajax({
