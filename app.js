@@ -41,3 +41,25 @@ app.post('/rep_info',function(req,res){
 
 });
 
+app.post('/user_info',function(req,res){
+    // basic auth
+  var username = req.body.username;
+  var password = req.body.password;
+
+  var gh = new GitHub({
+      username: username,
+      password: password
+      /* also acceptable:
+      token: 'MY_OAUTH_TOKEN'
+      */
+  });
+
+  var userinfo = gh.getUser();
+
+  userinfo.getProfile(function(error,result){
+      console.log(result);
+      return res.send(JSON.stringify({"res":result}));
+  });
+
+});
+
