@@ -80,7 +80,7 @@ $(document).ready(function () {
             get_data();
              // alert(JSON.stringify(user));
             // User is signed in.
-            
+
             // alert(user.displayName);
             $('.sign-in-logout').html(
                 `<div class="navbar-buttons" style="margin-top:20px">
@@ -96,9 +96,16 @@ $(document).ready(function () {
             `
             );
             show_function()
-            
+
             show_recommendations();
-            
+
+            $(".rep_card").click(function () {
+                alert('clicked rep card');
+                var id = $(this).attr('id');
+                localStorage.clicked_rep = id;
+                window.location.replace('../rep_details.html');
+            })
+
         } else {
             // No user is signed in.
             $('#cards').html('')

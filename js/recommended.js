@@ -1,8 +1,8 @@
 function show_recommendations()
-{   
+{
     $('#filters').append(
         `<div class="container">
-        
+
             <div class="row" style="font-size:20px">
             <div class="col-md-1"></div>
             <div class="col-md-2"><input id="1" onchange="clicked(1)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Language</div>
@@ -24,14 +24,14 @@ function show_recommendations()
     	var forks = 5
     	var contributors = 12
 
-    	if (i%3==0) 
+    	if (i%3==0)
     	{
     		$('#cards').append(
     			'<div id="blog-homepage" class="row">'
     		)
     	}
     	$('#cards').append(
-    		'<div class="col-sm-3 card">\
+    		'<div class="col-sm-3 card rep_card" id="'+rep_name+i+'">\
     		 <div class="post">\
             <h4><center>'+rep_name+'</center></h4>\
             <center>\
@@ -66,24 +66,25 @@ function show_recommendations()
           </div>\
         </div>'
     	); // end of append
-    	if (i%3==0) 
+    	if (i%3==0)
     	{
     		$('#cards').append(
     			'</div>'
     		)
     	}
     }
-}   
+}
+
 
 var arr = [false,false,false,false,false]
 var labels = ['Languages','Stars','Contributors','Forks','Topics']
 function clicked(id)
 {
-    if (!arr[id-1]) 
+    if (!arr[id-1])
     {
         // invisible to visible
         arr[id-1] = !arr[id-1]
-        if (id==1||id==5) 
+        if (id==1||id==5)
         {
            $('#s'+id).html(
                 `<br><div class="row" style="display:inline-block">
@@ -105,7 +106,7 @@ function clicked(id)
                     </div>
                     <div class="col-md-2"></div>
                 </div>`
-            ) 
+            )
         }
         else
         {
@@ -131,7 +132,7 @@ function clicked(id)
             </div>`
         )
         }
-        
+
     }
     else
     {
@@ -183,7 +184,7 @@ function show_function()
             </div>
             <div class="col-md-3"></div>
             </div>
-               
+
             </div>
             <br><br>
             <div id="filters"></div><br>
