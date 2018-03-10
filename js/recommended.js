@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-
+    $('#show_to_logged_in').hide();
     for (var i = 0; i < 12; i ++) {
     	var rep_name = 'rep_name'
     	var main_language = 'main_language'
@@ -55,4 +55,10 @@ $( document ).ready(function() {
     	}
     }
 });
-    
+
+
+function login()
+{
+    $('#show_to_general').hide();
+    $('#show_to_logged_in').show();
+}

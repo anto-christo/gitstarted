@@ -1,7 +1,13 @@
 .card{
 	margin: 20px;
 	padding:10px 20px 10px 20px;
-	width: 325px;
+	width: 340px;
 	/*border: 1px solid black;*/
 	background-color: white
+}
+
+.refresh_button{
+	padding:10px; 
+	font-size:25px;
+	/*border-radius: 10px;*/
 }
