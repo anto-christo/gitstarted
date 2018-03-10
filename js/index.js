@@ -7,7 +7,8 @@ $(document).ready(function(){
 
 		var languages = []; // All langs of user
 		var sizes = []; // All lang sizes of user
-		var stars = []; //All stars in reps of user
+		var stars = 0; //All stars in reps of user
+		var forks = 0; //All forks in reps of user
 
 		$.ajax({
 			type:'POST',
@@ -19,6 +20,8 @@ $(document).ready(function(){
 				console.log(data.res);
 
 				var nos = [];
+				var total_stars = 0;
+				var total_forks = 0;
 
 				for(var k in data.res){
 
@@ -58,18 +61,21 @@ $(document).ready(function(){
 
 							}
 						}
+
 					});
+					
+					total_stars += data.res[k].stargazers_count;
+					total_forks += data.res[k].forks_count;
 				}
 
-				console.log(sizes);
+				stars = Math.floor(total_stars/data.res.length);
+				forks = Math.floor(total_forks/data.res.length);
+
+				console.log(forks);
 
 				for(i=0;i<sizes.length;i++){
 					sizes[i] = Math.floor(sizes[i]/(nos[i]+1));
 				}
-
-				console.log(nos);
-				console.log(languages);
-				console.log(sizes);
 			}
 		});
 	});
