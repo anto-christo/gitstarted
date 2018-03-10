@@ -35,26 +35,7 @@ function signInPOP() {
     });
 }
 function signIn() {
-    // firebase.auth().signInWithPopup(provider).then(function (result) {
-    //     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-    //     var token = result.credential.accessToken;
-    //     alert("Token : " + token);
-    //     // The signed-in user info.
-    //     var user = result.user;
-    //     //alert(JSON.stringify(user));
-    //     // ...
-    // }).catch(function (error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     console.log(errorCode);
-    //     var errorMessage = error.message;
-    //     console.log(errorMessage);
-    //     // The email of the user's account used.
-    //     var email = error.email;
-    //     // The firebase.auth.AuthCredential type that was used.
-    //     var credential = error.credential;
-    //     // ...
-    // });
+   
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
@@ -90,46 +71,8 @@ function logOut() {
     });
 }
 
-// signIn();
 
 $(document).ready(function () {
-
-    // alert('here');  
-    // var user = firebase.auth().currentUser;
-
-   
-
-    // if (user) {
-    //     // User is signed in.
-    //     alert('user.displayName');
-    //     $('.sign-in-logout').html(
-    //         `<div class="navbar-buttons" style="margin-top:20px">
-    //             <div class="navbar-collapse collapse right">
-    //                 <span "margin-right:8%">Hello ` + user.displayName + `,&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    //                 <button type="button" class="btn btn-primary logout-btn" style="padding-right:20px;">
-    //                     <span class="align-middle">
-    //                        <span>LOG OUT</span>
-    //                     </span>
-    //                 </button>
-    //             </div>
-    //         </div>
-    //         `
-    //     );
-    // } else {
-    //     // No user is signed in.
-    //     $('.sign-in-logout').html(
-    //         `<div class="navbar-buttons" style="margin-top:20px">
-    //             <div class="navbar-collapse collapse right">
-    //                 <button type="button" class="btn btn-primary signin-btn" style="padding-right:20px;">
-    //                     <span class="align-middle">
-    //                          <i class="fab fa-github fa-lg" style="margin-right:8%"></i><span>SIGN IN</span>
-    //                     </span>
-    //                 </button>
-    //             </div>
-    //         </div>
-    //         `
-    //     );
-    // }
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -155,9 +98,49 @@ $(document).ready(function () {
                 <div class="container">
                     <div class="col-md-12">
                         <h3 style="font-style:italic;" >Recommended...</h3>
-                        <p class="lead">Checkout these awesome reps we picked just for you !!</p>
+                        <p class="lead">Checkout these awesome repos we picked just for you !!</p>
                     </div>
                 </div>
+            </div>
+            <div>
+                <center>
+                    <h2>Apply filters</h2>
+                </center>
+                <br>
+            </div>
+            <div class="container">
+            <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <center>
+                <div class="slidecontainer" style="width:100%;">
+                  <input type="range" min="1" max="5" value="2" class="slider" id="slider_input" onchange="slider_change()">
+                </div>
+            </center>
+            <br>
+            <div class="col-md-1">Beginner</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">Advanced beginner</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Intermediate</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Advanced intermediate</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Expert</div>
+
+            </div>
+            <div class="col-md-3"></div>
+            </div>
+               
+            </div>
+            <br><br>
+            <div id="filters"></div><br>
+            <div class="container">
+                <div id="s1"></div>
+                <div id="s2"></div>
+                <div id="s3"></div>
+                <div id="s4"></div>
+                <div id="s5"></div>
             </div>
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
@@ -197,6 +180,7 @@ $(document).ready(function () {
                     </div>
                 </div>
             </div>
+
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
             </div>
@@ -224,3 +208,8 @@ $(document).ready(function () {
 });
 
 
+function slider_change()
+{
+    var slider = document.getElementById("slider_input");
+    // console.log(slider.value)
+}
