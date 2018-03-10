@@ -103,7 +103,7 @@ $(document).ready(function () {
                 alert('clicked rep card');
                 var id = $(this).attr('id');
                 localStorage.clicked_rep = id;
-                window.location.replace('../rep_details.html');
+                window.open('../rep_details.html');
             })
 
         } else {
