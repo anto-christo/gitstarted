@@ -1,5 +1,6 @@
-$( document ).ready(function() {
-
+function show_recommendations()
+{
+    console.log("in")
     for (var i = 0; i < 12; i ++) {
     	var rep_name = 'rep_name'
     	var main_language = 'main_language'
@@ -54,5 +55,6 @@ $( document ).ready(function() {
     		)
     	}
     }
-});
-    
+}   
+
+
