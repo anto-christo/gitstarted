@@ -7,17 +7,21 @@ $(document).ready(function(){
 
 		var languages = []; // All langs of user
 		var sizes = []; // All lang sizes of user
+		var stars = []; //All stars in reps of user
 
 		$.ajax({
 			type:'POST',
-			url:'/submit',
+			url:'/rep_info',
 			data:{username:username,password:password},
 			dataType:'json',
 			success: function(data){
 
 				console.log(data.res);
 
+				var nos = [];
+
 				for(var k in data.res){
+
 					$.ajax({
 						type:'GET',
 						url:data.res[k].languages_url,
@@ -40,6 +44,7 @@ $(document).ready(function(){
 
 									languages.push(langs[i]);
 									sizes.push(langsize[i]);
+									nos.push(0);
 								}
 
 								else{
@@ -47,16 +52,24 @@ $(document).ready(function(){
 									console.log("curr-size="+langsize[i])
 									console.log("b="+sizes[pos]);
 									sizes[pos]+=langsize[i];
+									nos[pos]+=1;
 									console.log("a="+sizes[pos]);
 								}
-
-								console.log(languages);
-								console.log(sizes);
 
 							}
 						}
 					});
 				}
+
+				console.log(sizes);
+
+				for(i=0;i<sizes.length;i++){
+					sizes[i] = Math.floor(sizes[i]/(nos[i]+1));
+				}
+
+				console.log(nos);
+				console.log(languages);
+				console.log(sizes);
 			}
 		});
 	});

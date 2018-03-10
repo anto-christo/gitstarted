@@ -19,18 +19,18 @@ app.use(bodyParser.json());
 var GitHub = require('github-api');
 var gh = new GitHub();
 
-app.post('/submit',function(req,res){
+app.post('/rep_info',function(req,res){
       // basic auth
-  var username = req.body.username;
-  var password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
 
-  var gh = new GitHub({
-     username: username,
-     password: password
-     /* also acceptable:
+    var gh = new GitHub({
+        username: username,
+        password: password
+        /* also acceptable:
         token: 'MY_OAUTH_TOKEN'
-      */
-  });
+        */
+    });
 
     var userrepos = gh.getUser();
 
