@@ -17,25 +17,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var GitHub = require('github-api');
+var gh = new GitHub();
 
 app.post('/submit',function(req,res){
       // basic auth
   var username = req.body.username;
   var password = req.body.password;
 
-  // var gh = new GitHub({
-  //    username: username,
-  //    password: password
-  //    /* also acceptable:
-  //       token: 'MY_OAUTH_TOKEN'
-  //     */
-  // });
+  var gh = new GitHub({
+     username: username,
+     password: password
+     /* also acceptable:
+        token: 'MY_OAUTH_TOKEN'
+      */
+  });
 
-    var gh = new GitHub();
+    var userrepos = gh.getUser();
 
-    var repos = gh.search();
-
-    repos.forRepositories({q:"user:anto-christo"},function(error,result){
+    userrepos.listRepos(function(error,result){
         console.log(result);
         return res.send(JSON.stringify({"res":result}));
     });
