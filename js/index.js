@@ -10,6 +10,8 @@ $(document).ready(function(){
 		var stars = 0; //All stars in reps of user
 		var forks = 0; //All forks in reps of user
 		var followers = 0;
+		var commits = 0;
+		var repos = 0;
 
 		$.ajax({
 			type:'POST',
@@ -23,6 +25,8 @@ $(document).ready(function(){
 				var nos = [];
 				var total_stars = 0;
 				var total_forks = 0;
+
+				repos = data.res.length;
 
 				for(var k in data.res){
 
