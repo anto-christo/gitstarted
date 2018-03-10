@@ -35,7 +35,7 @@ app.post('/rep_info',function(req,res){
     var userrepos = gh.getUser();
 
     userrepos.listRepos(function(error,result){
-        console.log(result);
+        //console.log(result);
         return res.send(JSON.stringify({"res":result}));
     });
 
@@ -62,4 +62,3 @@ app.post('/user_info',function(req,res){
   });
 
 });
-
