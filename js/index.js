@@ -2,7 +2,7 @@ function get_data(){
 
 	var token = localStorage.getItem('token');
 
-	console.log(token);
+	// console.log(token);
 
 	var username = $("#username").val();
 	var password = $("#password").val();
@@ -14,6 +14,16 @@ function get_data(){
 	var followers = 0;
 	//var commits = 0;
 	var repos = 0;
+	// $.ajax({
+	// 	type:'GET',
+	// 	url:'https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc',
+	// 	data:{token:token},
+	// 	dataType:'json',
+	// 	success: function(data){
+	// 		// console.log('\n\nHERE\n\n')
+	// 		// console.log(data)
+	// 	}
+	// });
 
 	$.ajax({
 		type:'POST',
@@ -22,7 +32,7 @@ function get_data(){
 		dataType:'json',
 		success: function(data){
 
-			console.log(data.res);
+			// console.log(data.res);
 
 			var nos = [];
 			var total_stars = 0;
@@ -74,7 +84,7 @@ function get_data(){
 				total_stars += data.res[k].stargazers_count;
 				total_forks += data.res[k].forks_count;
 
-				console.log(data.res[k].name);
+				// console.log(data.res[k].name);
 			}
 
 			stars = Math.floor(total_stars/data.res.length);
@@ -93,12 +103,12 @@ function get_data(){
 				dataType:'json',
 				success: function(data){
 					followers = data.res.followers;
-					console.log(followers);
-					console.log(languages);
-					console.log(sizes);
-					console.log(stars);
-					console.log(forks);
-					console.log(repos);
+					// console.log(followers);
+					// console.log(languages);
+					// console.log(sizes);
+					// console.log(stars);
+					// console.log(forks);
+					// console.log(repos);
 
 					var lang_array = JSON.stringify(languages);
 					var size_array = JSON.stringify(sizes);
