@@ -20,16 +20,11 @@ var GitHub = require('github-api');
 var gh = new GitHub();
 
 app.post('/rep_info',function(req,res){
-      // basic auth
-    var username = req.body.username;
-    var password = req.body.password;
+
+    var token = req.body.token;
 
     var gh = new GitHub({
-        username: username,
-        password: password
-        /* also acceptable:
-        token: 'MY_OAUTH_TOKEN'
-        */
+        token:token
     });
 
     var userrepos = gh.getUser();
@@ -42,16 +37,11 @@ app.post('/rep_info',function(req,res){
 });
 
 app.post('/user_info',function(req,res){
-    // basic auth
-  var username = req.body.username;
-  var password = req.body.password;
+
+    var token = req.body.token;
 
   var gh = new GitHub({
-      username: username,
-      password: password
-      /* also acceptable:
-      token: 'MY_OAUTH_TOKEN'
-      */
+        token:token
   });
 
   var userinfo = gh.getUser();

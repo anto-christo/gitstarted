@@ -16,6 +16,7 @@ function signInPOP() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         var token = result.credential.accessToken;
+        localStorage.setItem('token',token);
         alert("Token : " + token);
         // The signed-in user info.
         var user = result.user;
@@ -59,7 +60,7 @@ function signIn() {
     firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
             // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            var token = result.credential.accessToken;
+            token = result.credential.accessToken;
             alert("Token : " + token);
             // ...
         }
@@ -182,4 +183,3 @@ $(document).ready(function () {
     });
 
 });
-

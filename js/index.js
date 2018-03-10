@@ -1,6 +1,11 @@
 $(document).ready(function(){
 
 	$("#submit").click(function(){
+
+		var token = localStorage.getItem('token');
+
+		console.log(token);
+
 		var username = $("#username").val();
 		var password = $("#password").val();
 
@@ -15,7 +20,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:'POST',
 			url:'/rep_info',
-			data:{username:username,password:password},
+			data:{username:username,password:password,token:token},
 			dataType:'json',
 			success: function(data){
 
@@ -88,7 +93,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:'POST',
 			url:'/user_info',
-			data:{username:username,password:password},
+			data:{username:username,password:password,token:token},
 			dataType:'json',
 			success: function(data){
 				followers = data.res.followers;
