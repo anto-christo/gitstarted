@@ -10,7 +10,7 @@ $(document).ready(function () {
             console.log(contents);
             // var convertedHTML = markdown.toHTML(contents);
             var convertedHTML = converter.makeHtml(contents);
-            $('#markdown').html(
+            $('.readme-content').html(
                 convertedHTML
             );
         })
