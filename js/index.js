@@ -1,5 +1,5 @@
 function get_data(){
-	
+
 	var token = localStorage.getItem('token');
 
 	console.log(token);
@@ -18,7 +18,7 @@ function get_data(){
 	$.ajax({
 		type:'POST',
 		url:'/rep_info',
-		data:{username:username,password:password,token:token},
+		data:{token:token},
 		dataType:'json',
 		success: function(data){
 
@@ -85,17 +85,38 @@ function get_data(){
 			for(i=0;i<sizes.length;i++){
 				sizes[i] = Math.floor(sizes[i]/(nos[i]+1));
 			}
+
+			$.ajax({
+				type:'POST',
+				url:'/user_info',
+				data:{token:token},
+				dataType:'json',
+				success: function(data){
+					followers = data.res.followers;
+					console.log(followers);
+					console.log(languages);
+					console.log(sizes);
+					console.log(stars);
+					console.log(forks);
+					console.log(repos);
+
+					var lang_array = JSON.stringify(languages);
+					var size_array = JSON.stringify(sizes);
+
+					$.ajax({
+						type:'POST',
+						url:'/get_recom',
+						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array},
+						dataType:'json',
+						success: function(data){
+							
+						}
+					});
+				}
+			});
 		}
 	});
 
-	$.ajax({
-		type:'POST',
-		url:'/user_info',
-		data:{username:username,password:password,token:token},
-		dataType:'json',
-		success: function(data){
-			followers = data.res.followers;
-			console.log(followers);
-		}
-	});
+	
+
 }

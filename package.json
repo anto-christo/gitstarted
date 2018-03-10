@@ -12,6 +12,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "github-api": "^3.0.0",
-    "octonode": "^0.9.2"
+    "octonode": "^0.9.2",
+    "request": "^2.83.0"
   }
 }

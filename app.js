@@ -28,6 +28,11 @@ app.post('/rep_info',function(req,res){
     });
 
     var userrepos = gh.getUser();
+    var rate = gh.getRateLimit();
+
+    rate.getRateLimit(function(error,result){
+        //console.log(result);
+    })
 
     userrepos.listRepos(function(error,result){
         //console.log(result);
@@ -47,6 +52,31 @@ app.post('/user_info',function(req,res){
   var userinfo = gh.getUser();
 
   userinfo.getProfile(function(error,result){
+      //console.log(result);
+      return res.send(JSON.stringify({"res":result}));
+  });
+
+});
+
+app.post('/get_recom',function(req,res){
+
+  var token = req.body.token;
+  var stars = req.body.stars;
+  var followers = req.body.followers;
+  var repos = req.body.repos;
+  var languages = req.body.languages;
+  var sizes = req.body.sizes;
+
+  var lang = JSON.parse(languages);
+  var size = JSON.parse(sizes);
+
+  var gh = new GitHub({
+        token:token
+  });
+
+  var repos = gh.search();
+
+  repos.forRepositories({q:"language:javascriptORpython"},function(error,result){
       console.log(result);
       return res.send(JSON.stringify({"res":result}));
   });
