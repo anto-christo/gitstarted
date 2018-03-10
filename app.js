@@ -82,3 +82,20 @@ app.post('/get_recom',function(req,res){
   });
 
 });
+
+
+// var github = require('octonode');
+
+// // Then we instantiate a client with or without a token (as show in a later section)
+// var client = github.client();
+// var ghsearch = client.search();
+// ghsearch.repos({
+//         q: 'language:javascript+language:html',
+//         sort: 'stars',
+//         order: 'asc',
+//         page:2,
+//         per_page: 2
+//       }, function(error,result){
+//         console.log(result)
+//       }
+//     )

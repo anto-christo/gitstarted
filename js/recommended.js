@@ -15,7 +15,7 @@ function show_recommendations()
         </div>`
         )
 
-    console.log("in")
+    // console.log("in")
     for (var i = 0; i < 12; i ++) {
     	var rep_name = 'rep_name'
     	var main_language = 'main_language'
