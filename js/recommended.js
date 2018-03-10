@@ -139,30 +139,71 @@ function clicked(id)
         arr[id-1] = !arr[id-1]
         $('#s'+id).html('')
     }
-    // console.log(arr)
-    // var a = $('#'+id).prop('checked');
-    // console.log("id: "+id+" "+a)
-    // $('#field').
+
 }
 
 
+function show_function()
+{
+    $('#show').html(
+                `<div class="box text-center" data-animate="fadeInUp">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h3 style="font-style:italic;" >Recommended...</h3>
+                        <p class="lead">Checkout these awesome repos we picked just for you !!</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <center>
+                    <h2>Apply filters</h2>
+                </center>
+                <br>
+            </div>
+            <div class="container">
+            <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <center>
+                <div class="slidecontainer" style="width:100%;">
+                  <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
+                </div>
+            </center>
+            <br>
+            <div class="col-md-1">Beginner</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">Advanced beginner</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Intermediate</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Advanced intermediate</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">Expert</div>
 
-// <div class="row">
-//                 <div class="col-md-3"></div>
-//                 <div class="col-md-2" style="margin-top: 5px">
-//                     <center style="font-size: 18px">
-//                         Language
-//                     </center>
-//                 </div>
-//                 <div class="col-md-7">
-//                     <div style="width: 50%">
-//                         <div class="input-group">
-//                           <input type="text" class="form-control" placeholder="Search for...">
-//                           <span class="input-group-btn">
-//                             <button class="btn btn-default" type="button">Go!</button>
-//                           </span>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="col-md-2"></div>
-//             </div>
+            </div>
+            <div class="col-md-3"></div>
+            </div>
+               
+            </div>
+            <br><br>
+            <div id="filters"></div><br>
+            <div class="container">
+                <div id="s1"></div>
+                <div id="s2"></div>
+                <div id="s3"></div>
+                <div id="s4"></div>
+                <div id="s5"></div>
+            </div>
+            <div class="container" id="cards">
+                <div class="col-md-12" data-animate="fadeInUp"></div>
+            </div>
+            <br>
+            <center>
+                <button type="button" class="btn btn-success refresh_button" onclick="refresh()">
+                    Show me something else!
+                </button>
+            </center>
+            <br>
+            <br>`
+                )
+}

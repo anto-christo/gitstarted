@@ -16,7 +16,8 @@ function signInPOP() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         var token = result.credential.accessToken;
-        // alert("Token : " + token);
+        localStorage.setItem('token',token);
+        alert("Token : " + token);
         // The signed-in user info.
         var user = result.user;
         //alert(JSON.stringify(user));
@@ -35,13 +36,13 @@ function signInPOP() {
     });
 }
 function signIn() {
-   
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
             // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            var token = result.credential.accessToken;
-            // alert("Token : " + token);
+            token = result.credential.accessToken;
+            localStorage.setItem('token',token);
+            alert("Token : " + token);
             // ...
         }
         // The signed-in user info.
@@ -76,6 +77,7 @@ $(document).ready(function () {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
+            get_data();
              // alert(JSON.stringify(user));
             // User is signed in.
             
@@ -93,67 +95,8 @@ $(document).ready(function () {
             </div>
             `
             );
-            $('#show').html(
-                `<div class="box text-center" data-animate="fadeInUp">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h3 style="font-style:italic;" >Recommended...</h3>
-                        <p class="lead">Checkout these awesome repos we picked just for you !!</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <center>
-                    <h2>Apply filters</h2>
-                </center>
-                <br>
-            </div>
-            <div class="container">
-            <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-            <center>
-                <div class="slidecontainer" style="width:100%;">
-                  <input type="range" min="1" max="5" value="2" class="slider" id="slider_input" onchange="slider_change()">
-                </div>
-            </center>
-            <br>
-            <div class="col-md-1">Beginner</div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1">Advanced beginner</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Advanced intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Expert</div>
-
-            </div>
-            <div class="col-md-3"></div>
-            </div>
-               
-            </div>
-            <br><br>
-            <div id="filters"></div><br>
-            <div class="container">
-                <div id="s1"></div>
-                <div id="s2"></div>
-                <div id="s3"></div>
-                <div id="s4"></div>
-                <div id="s5"></div>
-            </div>
-            <div class="container" id="cards">
-                <div class="col-md-12" data-animate="fadeInUp"></div>
-            </div>
-            <br>
-            <center>
-                <button type="button" class="btn btn-success refresh_button" onclick="refresh()">
-                    Show me something else!
-                </button>
-            </center>
-            <br>
-            <br>`
-                )
+            show_function()
+            
             show_recommendations();
             
         } else {
