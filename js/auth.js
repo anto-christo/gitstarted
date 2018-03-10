@@ -36,7 +36,7 @@ function signInPOP() {
     });
 }
 function signIn() {
-    
+
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function (result) {
         if (result.credential) {
@@ -116,6 +116,7 @@ $(document).ready(function () {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
+            get_data();
              // alert(JSON.stringify(user));
             // User is signed in.
             
