@@ -109,7 +109,7 @@ function get_data(){
 						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array},
 						dataType:'json',
 						success: function(data){
-							
+							console.log(data);
 						}
 					});
 				}

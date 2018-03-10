@@ -58,27 +58,74 @@ app.post('/user_info',function(req,res){
 
 });
 
+// app.post('/get_recom',function(req,res){
+
+//   var token = req.body.token;
+//   var stars = req.body.stars;
+//   var followers = req.body.followers;
+//   var repos = req.body.repos;
+//   var languages = req.body.languages;
+//   var sizes = req.body.sizes;
+
+//   var lang = JSON.parse(languages);
+//   var size = JSON.parse(sizes);
+
+//   var gh = new GitHub({
+//         token:token
+//   });
+
+//   var repos = gh.search();
+
+//   repos.forRepositories({q:"language:javascript+python"},function(error,result){
+//       console.log(result);
+//       return res.send(JSON.stringify({"res":result}));
+//   });
+
+// });
+
+var github = require('octonode');
+
 app.post('/get_recom',function(req,res){
 
-  var token = req.body.token;
-  var stars = req.body.stars;
-  var followers = req.body.followers;
-  var repos = req.body.repos;
-  var languages = req.body.languages;
-  var sizes = req.body.sizes;
+    var token = req.body.token;
+    var stars = req.body.stars;
+    var followers = req.body.followers;
+    var repos = req.body.repos;
+    var forks = req.body.forks;
+    var languages = req.body.languages;
+    var sizes = req.body.sizes;
+  
+    var lang = JSON.parse(languages);
+    var size = JSON.parse(sizes);
 
-  var lang = JSON.parse(languages);
-  var size = JSON.parse(sizes);
+    var query = '';
 
-  var gh = new GitHub({
-        token:token
-  });
+    for(var i in lang){
+        var string = 'language:'+lang[i]+"+";
+        query = query+string;
+    }
 
-  var repos = gh.search();
+    var st = 'stars:>='+100000+"+";
+    var fl = 'followers:>='+100+"+";
+    var fk = 'forks:>='+100+"+";
 
-  repos.forRepositories({q:"language:javascriptORpython"},function(error,result){
-      console.log(result);
+    query=query+st+fl+fk;
+
+    console.log(query);
+
+    var client = github.client();
+  
+    var ghsearch = client.search();
+
+    ghsearch.repos({
+        q: query,
+        sort: 'created',
+        order: 'asc',
+        per_page: 100,
+        page:1
+      }, function(error,result){
+            //console.log(result);
       return res.send(JSON.stringify({"res":result}));
+}); 
+  
   });
-
-});
