@@ -41,7 +41,8 @@ app.post('/insert_user',function(req,res){
         const db = client.db('gs');
 
         db.collection('user_info').insert(obj,function(err,result){
-            
+            console.log("user inserted");
+            return res.send(JSON.stringify({res:"Done"}));
         });
     });
 });
@@ -150,45 +151,61 @@ var github = require('octonode');
 
 app.post('/get_recom',function(req,res){
 
-    var token = req.body.token;
-    var stars = req.body.stars;
-    var followers = req.body.followers;
-    var repos = req.body.repos;
-    var forks = req.body.forks;
-    var languages = req.body.languages;
-    var sizes = req.body.sizes;
-    var page = req.body.page;
-  
-    var lang = JSON.parse(languages);
-    var size = JSON.parse(sizes);
+    var username = req.body.username;
+    console.log(username);
+    var stars;
+    var followers;
+    var repos;
+    var forks;
+    var lang;
+    var size;
 
-    var query = '';
+    MongoClient.connect(url, function(err, client) {
+        assert.equal(null,err);
+        const db = client.db('gs');
 
-    for(var i in lang){
-        var string = 'language:'+lang[i]+"+";
-        query = query+string;
-    }
+        db.collection('user_info').find({username:username}).toArray(function(err,result){
+            console.log(result);
 
-    var st = 'stars:'+stars+"+";
-    var fl = 'followers:'+followers+"+";
-    var fk = 'forks:'+forks+"+";
+            stars = result[0].stars;
+            followers = result[0].followers;
+            repos = result[0].repos;
+            forks = result[0].forks;
+            lang = result[0].languages;
+            size = result[0].sizes;
 
-    query=query+st+fl+fk;
+            var token = req.body.token;
+            var page = req.body.page;
 
-    console.log(query);
+            var query = '';
 
-    var client = github.client();
-  
-    var ghsearch = client.search();
+            for(var i in lang){
+                var string = 'language:'+lang[i]+"+";
+                query = query+string;
+            }
 
-    ghsearch.repos({
-        q: query,
-        sort: 'created',
-        order: 'asc',
-        per_page: 100,
-        page:page
-      }, function(error,result){
-            //console.log(result);
-      return res.send(JSON.stringify({"res":result}));
-  }); 
+            var st = 'stars:'+stars+"+";
+            var fl = 'followers:'+followers+"+";
+            var fk = 'forks:'+forks+"+";
+
+            query=query+st+fl+fk;
+
+            console.log(query);
+
+            var client = github.client();
+        
+            var ghsearch = client.search();
+
+            ghsearch.repos({
+                q: query,
+                sort: 'created',
+                order: 'asc',
+                per_page: 100,
+                page:page
+            }, function(error,result){
+                    console.log(result);
+            return res.send(JSON.stringify({"res":result}));
+        });
+        });
+    }); 
 });
