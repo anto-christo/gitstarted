@@ -136,7 +136,7 @@ $(document).ready(function () {
         }).then(null, (err) => console.error(err))
 
     $('.github_link').click(function () {
-        alert('clicked link')
+        // alert('clicked link')
         window.open(github_url);
     })
 });
