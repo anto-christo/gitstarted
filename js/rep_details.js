@@ -6,7 +6,8 @@ $(document).ready(function () {
     var octo = new Octokat({
         token: localStorage.token
     })
-    var repo = octo.repos('philschatz', 'octokat.js')
+    alert(localStorage.clicked_rep_owner + "   " + localStorage.clicked_rep_nam);
+    var repo = octo.repos(localStorage.clicked_rep_owner, localStorage.clicked_rep_name)
     repo.contents('README.md').read() // Use `.read` to get the raw file.
         .then((contents) => { // `.fetch` is used for getting JSON
             // console.log(lognts);
@@ -16,20 +17,20 @@ $(document).ready(function () {
                 convertedHTML
             );
         })
-        .catch (function (e) {
+        .catch(function (e) {
             console.log(e); // "oh, no!"
             $('.readme-content').html(
                 'This repository doesn\'t have a README.md file'
             );
         });
 
-    octo.repos('philschatz', 'octokat.js').issues.fetch()
+    octo.repos(localStorage.clicked_rep_owner, localStorage.clicked_rep_name).issues.fetch()
         .then((someIssues) => {
             // console.log(someIssues)
-            for(i=0;i < someIssues.items.length; i++){
-            console.log(someIssues.items[i].title + "\n" + someIssues.items[i].htmlUrl);
-            var issue_title = someIssues.items[i].title;
-            var issue_url = someIssues.items[i].htmlUrl;
+            for (i = 0; i < someIssues.items.length; i++) {
+                console.log(someIssues.items[i].title + "\n" + someIssues.items[i].htmlUrl);
+                var issue_title = someIssues.items[i].title;
+                var issue_url = someIssues.items[i].htmlUrl;
                 $('.issues-list').append(`
                     <div align="left" class="panel panel-default" style="width: 90%">
                         <div class="panel-heading">
