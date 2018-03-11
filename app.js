@@ -104,49 +104,6 @@ app.post('/get_cont',function(req,res){
 
 });
 
-// app.post('/get_recom',function(req,res){
-
-//   var token = req.body.token;
-//   var stars = req.body.stars;
-//   var followers = req.body.followers;
-//   var repos = req.body.repos;
-//   var languages = req.body.languages;
-//   var sizes = req.body.sizes;
-
-//   var lang = JSON.parse(languages);
-//   var size = JSON.parse(sizes);
-
-//   var gh = new GitHub({
-//         token:token
-//   });
-
-//   var repos = gh.search();
-
-//   repos.forRepositories({q:"language:javascript+python"},function(error,result){
-//       console.log(result);
-//       return res.send(JSON.stringify({"res":result}));
-//   });
-
-// });
-
-
-// var github = require('octonode');
-
-// // Then we instantiate a client with or without a token (as show in a later section)
-// var client = github.client();
-// var ghsearch = client.search();
-// ghsearch.repos({
-//         q: 'language:javascript+language:html',
-//         sort: 'stars',
-//         order: 'asc',
-//         page:2,
-//         per_page: 2
-//       }, function(error,result){
-//         console.log(result)
-//       }
-//     )
-// });
-
 var github = require('octonode');
 
 app.post('/get_recom',function(req,res){
@@ -199,16 +156,16 @@ app.post('/get_recom',function(req,res){
             console.log(forks);
 
             var mstars = stars+20;
-            var mfollowers = followers+20;
+            //var mfollowers = followers+20;
             var mforks = forks+20;
 
             console.log(mforks);
 
             var st = 'stars:'+(stars-20)+".."+mstars+"+";
-            var fl = 'followers:'+(followers-20)+".."+mfollowers+"+";
+            //var fl = 'followers:'+(followers-20)+".."+mfollowers+"+";
             var fk = 'forks:'+(forks-20)+".."+mforks;
 
-            query=query+st+fl+fk;
+            query=query+st+fk;
 
             console.log(query);
 

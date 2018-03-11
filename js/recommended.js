@@ -75,7 +75,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             <h4>Have something specific in mind ?</h4>
             <div class="input-group" style="width:50%">
               <input type="text" id="keyword" class="form-control" placeholder="Keywords..." aria-describedby="basic-addon2">
-              <button onclick="keyword_search()"><span class="input-group-addon" id="basic-addon2">Go!</span></button>
+              <center><button onclick="keyword_search()"><span class="input-group-addon" id="basic-addon2">Go!</span></button></center>
             </div>
             </center>
             <br>
@@ -231,7 +231,7 @@ function show_function() {
                 `
                 <div class="container" style="marging-top:-50px">
                 <center>
-                    <h2>Your language usage</h2>
+                    <h4>Your language usage</h4>
                     <div id="lang_chart"></div>
                 </center>
                 </div>
@@ -271,15 +271,3 @@ function keyword_search(){
     localStorage.setItem('key',key);
     get_data();
 }
-
-
-            // <br>
-            // <div class="col-md-1">Beginner</div>
-            // <div class="col-md-1"></div>
-            // <div class="col-md-1">Advanced beginner</div>
-            // <div class="col-md-2"></div>
-            // <div class="col-md-1">Intermediate</div>
-            // <div class="col-md-2"></div>
-            // <div class="col-md-1">Advanced intermediate</div>
-            // <div class="col-md-2"></div>
-            // <div class="col-md-1">Expert</div>

@@ -158,16 +158,6 @@ function slider_change(){
 
 function get_data(){
 	console.log("\ninside get data\n")
-// $.ajax({
-// 	type:'GET',
-// 	url:'https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc',
-// 	data:{token:token},
-// 	dataType:'json',
-// 	success: function(data){
-// 		// console.log('\n\nHERE\n\n')
-// 		// console.log(data)
-// 	}
-// });
 	
     $('#cards').empty();
 	$('#loading-image').show();
@@ -209,17 +199,6 @@ function get_data(){
 				starlist.push(result[repo].stargazers_count);
 				forklist.push(result[repo].forks_count);
 				desc.push(result[repo].description);
-
-				// $.ajax({
-				// 	type:'POST',
-				// 	url:'/get_cont',
-				// 	data:{token:token,rep_name:result[repo].name},
-				// 	dataType:'json',
-				// 	async:false,
-				// 	success: function(data){
-				// 		cont.push(data.length);
-				// 	}
-				// });
 
 			}
 
