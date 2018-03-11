@@ -152,6 +152,8 @@ var github = require('octonode');
 app.post('/get_recom',function(req,res){
 
     var username = req.body.username;
+    var key = req.body.key;
+
     console.log(username);
     var stars;
     var followers;
@@ -177,7 +179,13 @@ app.post('/get_recom',function(req,res){
             var token = req.body.token;
             var page = req.body.page;
 
-            var query = '';
+            console.log(key);
+
+            if(key!=undefined)
+                var query = key+"+";
+
+            else
+                var query = '';
 
             for(var i in lang){
                 var string = 'language:'+lang[i]+"+";

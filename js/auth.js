@@ -78,6 +78,7 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             get_info();
+            localStorage.removeItem('key');
              // alert(JSON.stringify(user));
             // User is signed in.
 

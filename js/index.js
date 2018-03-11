@@ -146,6 +146,16 @@ function get_info(){
 	});
 }
 
+var svalue = 0;
+
+function slider_change(){
+	console.log("ccc");
+	var slider = document.getElementById('slider_input');
+	
+	svalue = slider.value;
+	get_data();
+}
+
 function get_data(){
 	console.log("\ninside get data\n")
 // $.ajax({
@@ -166,10 +176,12 @@ function get_data(){
 
 	page++;
 
+
+
 	$.ajax({
 		type:'POST',
 		url:'/get_recom',
-		data:{token:token, page:page, username:localStorage.getItem('username')},
+		data:{token:token, page:page, username:localStorage.getItem('username'),value:svalue,key:localStorage.getItem('key')},
 		dataType:'json',
 		error: function(data)
 		{

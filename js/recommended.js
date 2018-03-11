@@ -59,7 +59,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
                 <div class="col-md-6">
                 <center>
                     <div class="slidecontainer" style="width:100%;">
-                    <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onclick="slider_change()">
                     </div>
                 </center>
                 </div>
@@ -74,8 +74,8 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             <center>
             <h4>Have something specific in mind ?</h4>
             <div class="input-group" style="width:50%">
-              <input type="text" class="form-control" placeholder="Keywords..." aria-describedby="basic-addon2">
-              <span class="input-group-addon" id="basic-addon2" onclick="keyword_search()">Go!</span>
+              <input type="text" id="keyword" class="form-control" placeholder="Keywords..." aria-describedby="basic-addon2">
+              <button onclick="keyword_search()"><span class="input-group-addon" id="basic-addon2">Go!</span></button>
             </div>
             </center>
             <br>
@@ -255,6 +255,14 @@ function show_function() {
             <br>`
         )
    
+}
+
+
+function keyword_search(){
+    key = document.getElementById('keyword').value;
+    console.log(key);
+    localStorage.setItem('key',key);
+    get_data();
 }
 
 
