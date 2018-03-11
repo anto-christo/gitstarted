@@ -98,7 +98,7 @@ app.post('/get_cont',function(req,res){
   var repoinfo = gh.getRepo(rep_name);
 
   repoinfo.getContributors(function(error,result){
-      console.log(result);
+      // console.log(result);
       return res.send(JSON.stringify({"res":result}));
   });
 

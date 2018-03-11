@@ -2,6 +2,8 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
 {
     $('#loading-image').hide();
 
+
+
     console.log("inside show Recommended")
     var labels_array = []
     var values_array = []
@@ -36,6 +38,51 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
 
 
     $('#cards').empty();
+    
+    $('#cards').append(
+        ` <div>
+                <center>
+                    <h2>Chose complexity</h2>
+                </center>
+                <br>
+                <br>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-1" style="font-size:18px">
+                <center>Something easy</center>
+                </div>
+                <div class="col-md-6">
+                <center>
+                    <div class="slidecontainer" style="width:100%;">
+                    <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
+                    </div>
+                </center>
+                </div>
+                <div class="col-md-1" style="font-size:18px">
+                    <center>Something challenging</center>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+            <br>
+            <br>
+            <center>
+            <h4>Have something specific in mind ?</h4>
+            <div class="input-group" style="width:50%">
+              <input type="text" class="form-control" placeholder="Keywords..." aria-describedby="basic-addon2">
+              <span class="input-group-addon" id="basic-addon2" onclick="keyword_search()">Go!</span>
+            </div>
+            </center>
+            <br>
+            <br>
+
+            `
+    )
 
     // console.log("in")
     for (var i = 0; i < 12; i++) {
@@ -184,30 +231,7 @@ function show_function() {
                     </div>
                 </div>
             </div>
-            <div>
-                <center>
-                    <h2>Apply filters</h2>
-                </center>
-                <br>
-            </div>
-            <div class="container">
-            <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-1" style="font-size:18px">
-               <center>Something easy</center>
-            </div>
-            <div class="col-md-6">
-            <center>
-                <div class="slidecontainer" style="width:100%;">
-                  <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
-                </div>
-            </center>
-            </div>
-            <div class="col-md-1" style="font-size:18px">
-                <center>Something challenging</center>
-            </div>
-            <div class="col-md-2"></div>
-            </div>
+
 
 
             <br>
@@ -224,7 +248,7 @@ function show_function() {
             <br>
             <center>
                 <button type="button" class="btn btn-success refresh_button" onclick="get_data()">
-                    Show me something else!
+                    <span style="font-size:20px">Show me something else!</span>
                 </button>
             </center>
             <br>
