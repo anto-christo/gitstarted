@@ -184,13 +184,25 @@ app.post('/get_recom',function(req,res){
                 query = query+string;
             }
 
-            var st = 'stars:'+stars+"+";
-            var fl = 'followers:'+followers+"+";
-            var fk = 'forks:'+forks+"+";
+            stars = Number(stars);
+            followers = Number(followers);
+            forks = Number(forks);
+
+            console.log(forks);
+
+            var mstars = stars+20;
+            var mfollowers = followers+20;
+            var mforks = forks+20;
+
+            console.log(mforks);
+
+            var st = 'stars:'+(stars-20)+".."+mstars+"+";
+            var fl = 'followers:'+(followers-20)+".."+mfollowers+"+";
+            var fk = 'forks:'+(forks-20)+".."+mforks;
 
             query=query+st+fl+fk;
 
-            // console.log(query);
+            console.log(query);
 
             var client = github.client();
         
@@ -198,14 +210,14 @@ app.post('/get_recom',function(req,res){
 
             ghsearch.repos({
                 q: query,
-                sort: 'created',
+                sort: 'updated',
                 order: 'asc',
                 per_page: 100,
                 page:page
             }, function(error,result){
                     // console.log(result);
-            return res.send(JSON.stringify({"res":result}));
-        });
+                return res.send(JSON.stringify({"res":result}));
+            });
         });
     }); 
 });
