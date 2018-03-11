@@ -136,6 +136,17 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
         }
     }
 
+    $('#cards').append(
+        `<br>
+            <center>
+                <button type="button" class="btn btn-success refresh_button" onclick="get_data()">
+                    <span style="font-size:20px">Show me something else!</span>
+                </button>
+            </center>
+            <br><br>`
+    )
+    
+
     $(".rep_card").click(function () {
         // alert('clicked rep card');
         var id = $(this).attr('id');
@@ -245,13 +256,7 @@ function show_function() {
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
             </div>
-            <br>
-            <center>
-                <button type="button" class="btn btn-success refresh_button" onclick="get_data()">
-                    <span style="font-size:20px">Show me something else!</span>
-                </button>
-            </center>
-            <br>
+            
             <br>`
         )
    

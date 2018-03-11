@@ -38,7 +38,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://unpkg.com/frappe-charts@1.0.0/dist/frappe-charts.min.iife.js"></script>
     <script src="js/respond.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script src="js/auth.js"></script>
 
     <script src="js/octokat.js"></script>
@@ -93,45 +92,38 @@
                         </div>
                         <div class="col-md-3">
                             <div align="right">
-                                <button>Check this repo on github</button>
+                                <button class="btn btn-primary github_link">Check this repo on github</button>
                             </div>
                         </div>
 
 
                     </div>
                     <div class="panel-body">
-                        <div class="col-md-2">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    Forks
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    Stars
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    Contributors
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    Issues
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                             <center>
-                                <div id="chart1" style="margin-top: -55px"></div>
-                            </center>
-                        </div>
-                        <div class="col-md-4">
-                            <center>
-                                <p>Activity</p>
-                                <div id="chart" style="margin-top: -35px"></div>
-                            </center>
-                        </div>
-
+                        <center>
+                            <div class="col-md-3" style="margin:5%; margin-left:7%; margin-top:8%">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="badge forks_count">14</span>
+                                        Forks
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge stars_count">14</span>
+                                        Stars
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-8" style="width: 50%;">
+                                <center>
+                                    <div id="chart" style=""></div>
+                                </center>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <center>
+                                    <p>Activity</p>
+                                    <div id="chart" style="margin-top: -35px"></div>
+                                </center>
+                            </div> -->
+                        </center>
                     </div>
                     <center>
                         <div class="panel panel-primary" style="width: 90%;">
@@ -148,8 +140,8 @@
 
                             </div>
                         </div>
-
                     </center>
+                    <div class="panel-footer">Panel footer</div>
                 </div>
             </div>
 
@@ -182,76 +174,7 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
-<script type="text/javascript">
-    let chart = new Chart( "#chart", { // or DOM element
-    data: {
-      labels: ["12am-3am", "3am-6am", "6am-9am", "9am-12pm",
-      "12pm-3pm", "3pm-6pm", "6pm-9pm", "9pm-12am"],
 
-      datasets: [
-        {
-          label: "Some Data", type: 'bar',
-          values: [25, 40, 30, 35, 8, 52, 17, 0]
-        },
-        // {
-        //   label: "Another Set", type: 'bar',
-        //   values: [25, 50, -10, 15, 18, 32, 27, 14]
-        // },
-        // {
-        //   label: "Yet Another", type: 'line',
-        //   values: [15, 20, -3, -15, 58, 12, -17, 37]
-        // }
-      ],
-
-      // yMarkers: [{ label: "Marker", value: 70 }],
-      // yRegions: [{ label: "Region", start: -10, end: 50 }]
-    },
-    lineOptions: {
-      regionFill: 1        // default: 0
-    },
-
-    // title: "Activity",
-    type: 'line', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
-    height: 150,
-    width: 300,
-    colors: ['purple', '#ffa3ef', 'red']
-  });
-</script>
-<script type="text/javascript">
-    let chart1 = new Chart( "#chart1", { // or DOM element
-    data: {
-      labels: ["HTML", "CSS", "Javascript", "Bootstrap",
-      "Jquery", "Node", "Firebase", "Github API"],
-
-      datasets: [
-        {
-          label: "Some Data", type: 'bar',
-          values: [25, 40, 30, 35, 8, 52, 17, 0]
-        },
-        // {
-        //   label: "Another Set", type: 'bar',
-        //   values: [25, 50, -10, 15, 18, 32, 27, 14]
-        // },
-        // {
-        //   label: "Yet Another", type: 'line',
-        //   values: [15, 20, -3, -15, 58, 12, -17, 37]
-        // }
-      ],
-
-      // yMarkers: [{ label: "Marker", value: 70 }],
-      // yRegions: [{ label: "Region", start: -10, end: 50 }]
-    },
-    lineOptions: {
-      regionFill: 1        // default: 0
-    },
-
-    // title: "Activity",
-    type: 'pie', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
-    height: 150,
-    width: 200,
-    colors: ['purple', '#ffa3ef', 'red']
-  });
-</script>
 
 </body>
 
