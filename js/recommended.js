@@ -1,7 +1,38 @@
 function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
 {
     $('#loading-image').hide();
+
     console.log("inside show Recommended")
+    var labels_array = []
+    var values_array = []
+    for (var i = 0; i < languages.length; i++) {
+        labels_array.push(languages[i])
+        var st = sizes[i]/1000;
+        values_array.push(st)
+    }
+
+     console.log("labels_array: "+ labels_array)
+     // console.log("lang_chart: "+ languages)
+        let lang_chart = new Chart( "#lang_chart", { // or DOM element
+        data: {
+          labels: labels_array,
+
+          datasets: [
+            {
+              // label: "Yet Another", type: 'line',
+              values: values_array
+            }
+          ],
+
+          // yMarkers: [{ label: "Marker", value: 70 }],
+          // yRegions: [{ label: "Region", start: -10, end: 50 }]
+        },
+
+        // title: "My Awesome Chart",
+        type: 'bar', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
+        height: 250,
+        colors: ['purple', '#ffa3ef', 'red']
+      });
 
 
     $('#cards').empty();
@@ -26,7 +57,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
     		 <div class="post">
             <h4 class="rep_name"><center>${rep_name}</center></h4>
             <center>
-            <div>
+            <div> 
             	<center class="badge" style="padding:5px;background-color: #3e78dd;padding-left:10px;padding-right:10px;margin:5px">${main_language}</center>
             </div>
             </center>
@@ -204,28 +235,7 @@ function show_function() {
             <br>
             <br>`
         )
-    console.log("lang_chart: "+ languages)
-        let lang_chart = new Chart( "#lang_chart", { // or DOM element
-        data: {
-          labels: ["12am-3am", "3am-6am", "6am-9am", "9am-12pm",
-          "12pm-3pm", "3pm-6pm", "6pm-9pm", "9pm-12am"],
-
-          datasets: [
-            {
-              // label: "Yet Another", type: 'line',
-              values: [15, 20, -3, -15, 58, 12, -17, 37]
-            }
-          ],
-
-          // yMarkers: [{ label: "Marker", value: 70 }],
-          // yRegions: [{ label: "Region", start: -10, end: 50 }]
-        },
-
-        // title: "My Awesome Chart",
-        type: 'bar', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
-        height: 250,
-        colors: ['purple', '#ffa3ef', 'red']
-      });
+   
 }
 
 
