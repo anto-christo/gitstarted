@@ -1,4 +1,4 @@
-function show_recommendations()
+function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
 {
     $('#filters').append(
         `<div class="container">
@@ -17,12 +17,13 @@ function show_recommendations()
 
     // console.log("in")
     for (var i = 0; i < 12; i ++) {
-    	var rep_name = 'rep_name'
-    	var main_language = 'main_language'
-    	var owner = 'owner'
-    	var stars = 57
-    	var forks = 5
-    	var contributors = 12
+    	var rep_name = repo[i];
+    	var main_language = language[i];
+    	var owner = ownerlist[i];
+    	var stars = starlist[i];
+        var forks = forklist[i];
+        var contributors = cont[i];
+        var desc = desclist[i];
 
     	if (i%3==0)
     	{
@@ -43,8 +44,7 @@ function show_recommendations()
             	<center>'+owner+'</center>\
             </div>\
             <hr>\
-            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean\
-                ultricies mi vitae est. Mauris placerat eleifend leo.</p>\
+            <p class="intro">'+desc+'</p>\
             </p>\
             <div class="row">\
                 <div class="col-md-4" style="display:inline">\

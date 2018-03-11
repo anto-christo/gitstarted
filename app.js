@@ -123,9 +123,9 @@ app.post('/get_recom',function(req,res){
         query = query+string;
     }
 
-    var st = 'stars:>='+100000+"+";
-    var fl = 'followers:>='+100+"+";
-    var fk = 'forks:>='+100+"+";
+    var st = 'stars:'+stars+"+";
+    var fl = 'followers:'+followers+"+";
+    var fk = 'forks:'+forks+"+";
 
     query=query+st+fl+fk;
 
