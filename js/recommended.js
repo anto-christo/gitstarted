@@ -1,20 +1,39 @@
-function show_recommendations(repo, language, ownerlist, starlist, forklist, desclist, cont) {
-    $('#filters').empty();
+function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
+{
+    $('#loading-image').hide();
 
-    $('#filters').append(
-        `<div class="container">
+    console.log("inside show Recommended")
+    var labels_array = []
+    var values_array = []
+    for (var i = 0; i < languages.length; i++) {
+        labels_array.push(languages[i])
+        var st = sizes[i]/1000;
+        values_array.push(st)
+    }
 
-            <div class="row" style="font-size:20px">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"><input id="1" onchange="clicked(1)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Language</div>
-            <div class="col-md-2"><input id="2" onchange="clicked(2)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Stars</div>
-            <div class="col-md-2"><input id="3" onchange="clicked(3)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Contributors</div>
-            <div class="col-md-2"><input id="4" onchange="clicked(4)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Forks</div>
-            <div class="col-md-2"><input id="5" onchange="clicked(5)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Topic</div>
-            <div class="col-md-1"></div>
-            </div>
-        </div>`
-    )
+     console.log("labels_array: "+ labels_array)
+     // console.log("lang_chart: "+ languages)
+        let lang_chart = new Chart( "#lang_chart", { // or DOM element
+        data: {
+          labels: labels_array,
+
+          datasets: [
+            {
+              // label: "Yet Another", type: 'line',
+              values: values_array
+            }
+          ],
+
+          // yMarkers: [{ label: "Marker", value: 70 }],
+          // yRegions: [{ label: "Region", start: -10, end: 50 }]
+        },
+
+        // title: "My Awesome Chart",
+        type: 'bar', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
+        height: 250,
+        colors: ['purple', '#ffa3ef', 'red']
+      });
+
 
     $('#cards').empty();
 
@@ -34,11 +53,11 @@ function show_recommendations(repo, language, ownerlist, starlist, forklist, des
             )
         }
         $('#cards').append(
-            `<div class="col-sm-3 card rep_card" id="${rep_name}~#~#~${owner}">
+            `<div class="col-sm-3 card rep_card" id="${rep_name}~#~#~${owner}" style="height:300px">
     		 <div class="post">
             <h4 class="rep_name"><center>${rep_name}</center></h4>
             <center>
-            <div>
+            <div> 
             	<center class="badge" style="padding:5px;background-color: #3e78dd;padding-left:10px;padding-right:10px;margin:5px">${main_language}</center>
             </div>
             </center>
@@ -149,7 +168,15 @@ function clicked(id) {
 
 function show_function() {
     $('#show').html(
-        `<div class="box text-center" data-animate="fadeInUp">
+                `
+                <div class="container">
+                <center>
+                    <h2>Your language usage</h2>
+                    <div id="lang_chart"></div>
+                </center>
+                </div>
+                <br><br>
+                <div class="box text-center" data-animate="fadeInUp">
                 <div class="container">
                     <div class="col-md-12">
                         <h3 style="font-style:italic;" >Recommended...</h3>
@@ -165,38 +192,32 @@ function show_function() {
             </div>
             <div class="container">
             <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="font-size:18px">
+               <center>Something easy</center>
+            </div>
             <div class="col-md-6">
             <center>
                 <div class="slidecontainer" style="width:100%;">
                   <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
                 </div>
             </center>
+            </div>
+            <div class="col-md-1" style="font-size:18px">
+                <center>Something challenging</center>
+            </div>
+            <div class="col-md-2"></div>
+            </div>
+
+
             <br>
-            <div class="col-md-1">Beginner</div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1">Advanced beginner</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Advanced intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Expert</div>
 
             </div>
-            <div class="col-md-3"></div>
-            </div>
-
-            </div>
+            <center>
+             <div class="loader" id="loading-image"></div>
+            </center>
             <br><br>
-            <div id="filters"></div><br>
-            <div class="container">
-                <div id="s1"></div>
-                <div id="s2"></div>
-                <div id="s3"></div>
-                <div id="s4"></div>
-                <div id="s5"></div>
-            </div>
+
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
             </div>
@@ -208,5 +229,18 @@ function show_function() {
             </center>
             <br>
             <br>`
-    )
+        )
+   
 }
+
+
+            // <br>
+            // <div class="col-md-1">Beginner</div>
+            // <div class="col-md-1"></div>
+            // <div class="col-md-1">Advanced beginner</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Intermediate</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Advanced intermediate</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Expert</div>

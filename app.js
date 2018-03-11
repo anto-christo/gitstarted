@@ -165,7 +165,7 @@ app.post('/get_recom',function(req,res){
         const db = client.db('gs');
 
         db.collection('user_info').find({username:username}).toArray(function(err,result){
-            console.log(result);
+            // console.log(result);
 
             stars = result[0].stars;
             followers = result[0].followers;
@@ -190,7 +190,7 @@ app.post('/get_recom',function(req,res){
 
             query=query+st+fl+fk;
 
-            console.log(query);
+            // console.log(query);
 
             var client = github.client();
         
@@ -203,7 +203,7 @@ app.post('/get_recom',function(req,res){
                 per_page: 100,
                 page:page
             }, function(error,result){
-                    console.log(result);
+                    // console.log(result);
             return res.send(JSON.stringify({"res":result}));
         });
         });

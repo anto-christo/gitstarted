@@ -31,8 +31,9 @@ var forks = 0; //All forks in reps of user
 var followers = 0;
 //var commits = 0;
 var repos = 0;
-
+$('#loading-image').show();
 function get_info(){
+	console.log("inside get infor")
 	$.ajax({
 		type:'POST',
 		url:'/rep_info',
@@ -85,7 +86,11 @@ function get_info(){
 							}
 
 						}
+
 					}
+					
+					
+
 
 				});
 				
@@ -113,6 +118,8 @@ function get_info(){
 					followers = data.res.followers;
 					var username = data.res.login;
 					localStorage.setItem('username',username);
+					// var temp = localStorage.getItem('username');
+					// console.log("temp : "+temp)
 					// console.log(followers);
 					// console.log(languages);
 					// console.log(sizes);
@@ -140,7 +147,20 @@ function get_info(){
 }
 
 function get_data(){
-
+	console.log("\ninside get data\n")
+// $.ajax({
+// 	type:'GET',
+// 	url:'https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc',
+// 	data:{token:token},
+// 	dataType:'json',
+// 	success: function(data){
+// 		// console.log('\n\nHERE\n\n')
+// 		// console.log(data)
+// 	}
+// });
+	
+    $('#cards').empty();
+	$('#loading-image').show();
 	var lang_array = JSON.stringify(languages);
 	var size_array = JSON.stringify(sizes);
 
@@ -151,6 +171,10 @@ function get_data(){
 		url:'/get_recom',
 		data:{token:token, page:page, username:localStorage.getItem('username')},
 		dataType:'json',
+		error: function(data)
+		{
+			console.log(data)
+		},
 		success: function(data){
 			console.log(data);
 
@@ -195,6 +219,10 @@ function get_data(){
 			console.log(desc);
 			console.log(cont);
 
+			console.log("adding lang in localStorage")
+			localStorage.setItem('user_languages',languages)
+			var arr = localStorage.getItem('user_languages')
+			console.log("arr: "+ arr);
 			show_recommendations(rep_name,lang,owner,starlist,forklist,desc,cont);
 		}
 	});
