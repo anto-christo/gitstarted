@@ -32,7 +32,7 @@ Based on the languuages you have used, the number of stars and forks that you ha
   
     ![Issues](/screenshots/issues.JPG?raw=true "Issues")<br/><br/>
     
-**P.S - The website is has not be hosted yet. In order to run the website on your localhost, please clone and do the following**
+**P.S - The website has not be hosted yet. In order to run the website on your localhost, please clone and do the following**
 1. Make sure you have Node.js and MongoDB installed on your system.
 2. Go to the root of the project and run `npm install` in command line to download the project dependencies.
 3. Start your Mongo server.
@@ -44,7 +44,9 @@ Based on the languuages you have used, the number of stars and forks that you ha
 * Enable slider functionality to let user select the level of projects within his experience range.
 * Add a tips page in order to help novice Open Source developers.
 * Add a trending repositories page.
-* Add more parameters to the recommended project search query to increase the accuracy of the results.<br/><br/>
+* Add more parameters to the recommended project search query to increase the accuracy of the results.
+Contributions in the form of above features or any other feature is always welcome !!
+<br/><br/>
 
 **Credits**
 * github.js - https://github.com/github-tools/github
