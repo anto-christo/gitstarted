@@ -1,3 +1,5 @@
+var page = 0;
+
 function get_data(){
 
 	var token = localStorage.getItem('token');
@@ -113,10 +115,12 @@ function get_data(){
 					var lang_array = JSON.stringify(languages);
 					var size_array = JSON.stringify(sizes);
 
+					page++;
+
 					$.ajax({
 						type:'POST',
 						url:'/get_recom',
-						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array},
+						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array,page:page},
 						dataType:'json',
 						success: function(data){
 							console.log(data);
@@ -141,16 +145,16 @@ function get_data(){
 								forklist.push(result[repo].forks_count);
 								desc.push(result[repo].description);
 
-								$.ajax({
-									type:'POST',
-									url:result[repo].contributors_url,
-									data:{token:token},
-									dataType:'json',
-									async:false,
-									success: function(data){
-										cont.push(data.length);
-									}
-								});
+								// $.ajax({
+								// 	type:'POST',
+								// 	url:'/get_cont',
+								// 	data:{token:token,rep_name:result[repo].name},
+								// 	dataType:'json',
+								// 	async:false,
+								// 	success: function(data){
+								// 		cont.push(data.length);
+								// 	}
+								// });
 
 							}
 

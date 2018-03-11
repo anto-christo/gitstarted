@@ -1,5 +1,8 @@
 function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
 {
+
+    $('#filters').empty();
+
     $('#filters').append(
         `<div class="container">
 
@@ -14,6 +17,8 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             </div>
         </div>`
         )
+
+        $('#cards').empty();
 
     // console.log("in")
     for (var i = 0; i < 12; i ++) {
@@ -200,7 +205,7 @@ function show_function()
             </div>
             <br>
             <center>
-                <button type="button" class="btn btn-success refresh_button" onclick="refresh()">
+                <button type="button" class="btn btn-success refresh_button" onclick="get_data()">
                     Show me something else!
                 </button>
             </center>
