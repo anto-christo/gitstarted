@@ -31,7 +31,7 @@ var forks = 0; //All forks in reps of user
 var followers = 0;
 //var commits = 0;
 var repos = 0;
-// $('#loading-image').show();
+$('#loading-image').show();
 function get_info(){
 	console.log("inside get infor")
 	$.ajax({
@@ -160,7 +160,7 @@ function get_data(){
 // });
 	
     $('#cards').empty();
-	// $('#loading-image').show();
+	$('#loading-image').show();
 	var lang_array = JSON.stringify(languages);
 	var size_array = JSON.stringify(sizes);
 
@@ -171,6 +171,10 @@ function get_data(){
 		url:'/get_recom',
 		data:{token:token, page:page, username:localStorage.getItem('username')},
 		dataType:'json',
+		error: function(data)
+		{
+			console.log(data)
+		},
 		success: function(data){
 			console.log(data);
 
@@ -219,7 +223,6 @@ function get_data(){
 			localStorage.setItem('user_languages',languages)
 			var arr = localStorage.getItem('user_languages')
 			console.log("arr: "+ arr);
-			// $('#loading-image').hide();
 			show_recommendations(rep_name,lang,owner,starlist,forklist,desc,cont);
 		}
 	});

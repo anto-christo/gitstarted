@@ -1,23 +1,8 @@
 function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
 {
-    // $('#loading-image').hide();
+    $('#loading-image').hide();
     console.log("inside show Recommended")
-    $('#filters').empty();
 
-    $('#filters').append(
-        `<div class="container">
-
-            <div class="row" style="font-size:20px">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"><input id="1" onchange="clicked(1)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Language</div>
-            <div class="col-md-2"><input id="2" onchange="clicked(2)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Stars</div>
-            <div class="col-md-2"><input id="3" onchange="clicked(3)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Contributors</div>
-            <div class="col-md-2"><input id="4" onchange="clicked(4)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Forks</div>
-            <div class="col-md-2"><input id="5" onchange="clicked(5)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Topic</div>
-            <div class="col-md-1"></div>
-            </div>
-        </div>`
-    )
 
     $('#cards').empty();
 
@@ -37,7 +22,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             )
         }
         $('#cards').append(
-            `<div class="col-sm-3 card rep_card" id="${rep_name}~#~#~${owner}">
+            `<div class="col-sm-3 card rep_card" id="${rep_name}~#~#~${owner}" style="height:300px">
     		 <div class="post">
             <h4 class="rep_name"><center>${rep_name}</center></h4>
             <center>
@@ -202,15 +187,11 @@ function show_function() {
             <br>
 
             </div>
+            <center>
+             <div class="loader" id="loading-image"></div>
+            </center>
             <br><br>
-            <div id="filters"></div><br>
-            <div class="container">
-                <div id="s1"></div>
-                <div id="s2"></div>
-                <div id="s3"></div>
-                <div id="s4"></div>
-                <div id="s5"></div>
-            </div>
+
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
             </div>
