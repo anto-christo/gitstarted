@@ -1,3 +1,5 @@
+var page = 0;
+
 function get_data(){
 
 	var token = localStorage.getItem('token');
@@ -113,13 +115,58 @@ function get_data(){
 					var lang_array = JSON.stringify(languages);
 					var size_array = JSON.stringify(sizes);
 
+					page++;
+
 					$.ajax({
 						type:'POST',
 						url:'/get_recom',
-						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array},
+						data:{token:token, followers:followers, stars:stars, forks:forks, repos:repos, languages:lang_array, sizes:size_array,page:page},
 						dataType:'json',
 						success: function(data){
 							console.log(data);
+
+							var result = data.res.items;
+
+							var lang = [];
+							var rep_name = [];
+							var owner = [];
+							var starlist = [];
+							var forklist = [];
+							var cont = [];
+							var desc = [];
+
+							for(i=0;i<12;i++){
+								var repo = Math.floor(Math.random()*100);
+
+								lang.push(result[repo].language);
+								rep_name.push(result[repo].name);
+								owner.push(result[repo].owner.login);
+								starlist.push(result[repo].stargazers_count);
+								forklist.push(result[repo].forks_count);
+								desc.push(result[repo].description);
+
+								// $.ajax({
+								// 	type:'POST',
+								// 	url:'/get_cont',
+								// 	data:{token:token,rep_name:result[repo].name},
+								// 	dataType:'json',
+								// 	async:false,
+								// 	success: function(data){
+								// 		cont.push(data.length);
+								// 	}
+								// });
+
+							}
+
+							console.log(lang);
+							console.log(rep_name);
+							console.log(owner);
+							console.log(starlist);
+							console.log(forklist);
+							console.log(desc);
+							console.log(cont);
+
+							show_recommendations(rep_name,lang,owner,starlist,forklist,desc,cont);
 						}
 					});
 				}

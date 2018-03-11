@@ -97,7 +97,7 @@ $(document).ready(function () {
             );
             show_function()
 
-            show_recommendations();
+            //show_recommendations();
 
             $(".rep_card").click(function () {
                 alert('clicked rep card');

@@ -58,6 +58,24 @@ app.post('/user_info',function(req,res){
 
 });
 
+app.post('/get_cont',function(req,res){
+
+    var token = req.body.token;
+    var rep_name = req.body.rep_name;
+
+  var gh = new GitHub({
+        token:token
+  });
+
+  var repoinfo = gh.getRepo(rep_name);
+
+  repoinfo.getContributors(function(error,result){
+      console.log(result);
+      return res.send(JSON.stringify({"res":result}));
+  });
+
+});
+
 // app.post('/get_recom',function(req,res){
 
 //   var token = req.body.token;
@@ -112,6 +130,7 @@ app.post('/get_recom',function(req,res){
     var forks = req.body.forks;
     var languages = req.body.languages;
     var sizes = req.body.sizes;
+    var page = req.body.page;
   
     var lang = JSON.parse(languages);
     var size = JSON.parse(sizes);
@@ -123,9 +142,9 @@ app.post('/get_recom',function(req,res){
         query = query+string;
     }
 
-    var st = 'stars:>='+100000+"+";
-    var fl = 'followers:>='+100+"+";
-    var fk = 'forks:>='+100+"+";
+    var st = 'stars:'+stars+"+";
+    var fl = 'followers:'+followers+"+";
+    var fk = 'forks:'+forks+"+";
 
     query=query+st+fl+fk;
 
@@ -140,7 +159,7 @@ app.post('/get_recom',function(req,res){
         sort: 'created',
         order: 'asc',
         per_page: 100,
-        page:1
+        page:page
       }, function(error,result){
             //console.log(result);
       return res.send(JSON.stringify({"res":result}));
