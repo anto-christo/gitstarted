@@ -6,7 +6,7 @@ $(document).ready(function () {
     var octo = new Octokat({
         token: localStorage.token
     })
-    alert(localStorage.clicked_rep_owner + "   " + localStorage.clicked_rep_nam);
+    // alert(localStorage.clicked_rep_owner + "   " + localStorage.clicked_rep_nam);
     var repo = octo.repos(localStorage.clicked_rep_owner, localStorage.clicked_rep_name)
     repo.contents('README.md').read() // Use `.read` to get the raw file.
         .then((contents) => { // `.fetch` is used for getting JSON

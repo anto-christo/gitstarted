@@ -90,7 +90,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
     }
 
     $(".rep_card").click(function () {
-        alert('clicked rep card');
+        // alert('clicked rep card');
         var id = $(this).attr('id');
         var data = id.split('~#~#~');
         var repo_n = data[0];
@@ -169,7 +169,7 @@ function clicked(id) {
 function show_function() {
     $('#show').html(
                 `
-                <div class="container">
+                <div class="container" style="marging-top:-50px">
                 <center>
                     <h2>Your language usage</h2>
                     <div id="lang_chart"></div>

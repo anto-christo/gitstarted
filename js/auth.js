@@ -17,7 +17,7 @@ function signInPOP() {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         var token = result.credential.accessToken;
         localStorage.setItem('token',token);
-        alert("Token : " + token);
+        // alert("Token : " + token);
         // The signed-in user info.
         var user = result.user;
         //alert(JSON.stringify(user));
@@ -42,7 +42,7 @@ function signIn() {
             // This gives you a GitHub Access Token. You can use it to access the GitHub API.
             token = result.credential.accessToken;
             localStorage.setItem('token',token);
-            alert("Token : " + token);
+            // alert("Token : " + token);
             // ...
         }
         // The signed-in user info.
