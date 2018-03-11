@@ -38,7 +38,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
 
 
     $('#cards').empty();
-    
+
     $('#cards').append(
         ` <div>
                 <center>
@@ -104,7 +104,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
     		 <div class="post">
             <h4 class="rep_name"><center>${rep_name}</center></h4>
             <center>
-            <div> 
+            <div>
             	<center class="badge" style="padding:5px;background-color: #3e78dd;padding-left:10px;padding-right:10px;margin:5px">${main_language}</center>
             </div>
             </center>
@@ -112,8 +112,10 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             	<center>${owner}</center>
             </div>
             <hr>
+            <div style="height:120px; overflow-y: auto;">
             <p class="intro">${desc}</p>
             </p>
+            </div>
             <div class="row">
                 <div class="col-md-6" style="display:inline">
                 <center>
@@ -145,7 +147,7 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
             </center>
             <br><br>`
     )
-    
+
 
     $(".rep_card").click(function () {
         // alert('clicked rep card');
@@ -256,10 +258,10 @@ function show_function() {
             <div class="container" id="cards">
                 <div class="col-md-12" data-animate="fadeInUp"></div>
             </div>
-            
+
             <br>`
         )
-   
+
 }
 
 
