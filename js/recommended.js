@@ -1,5 +1,6 @@
 function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist,cont)
 {
+    $('#loading-image').hide();
 
     $('#filters').empty();
 
@@ -152,7 +153,15 @@ function clicked(id)
 function show_function()
 {
     $('#show').html(
-                `<div class="box text-center" data-animate="fadeInUp">
+                `
+                <div class="container">
+                <center>
+                    <h2>Your language usage</h2>
+                    <div id="lang_chart"></div>
+                </center>
+                </div>
+                <br><br>
+                <div class="box text-center" data-animate="fadeInUp">
                 <div class="container">
                     <div class="col-md-12">
                         <h3 style="font-style:italic;" >Recommended...</h3>
@@ -164,33 +173,34 @@ function show_function()
                 <center>
                     <h2>Apply filters</h2>
                 </center>
-                <br>
-                <div class="loader" id="loading-image"></div>
-                <br>
+                
             </div>
             <div class="container">
             <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="font-size:18px">
+               <center>Something easy</center>
+            </div>
             <div class="col-md-6">
             <center>
                 <div class="slidecontainer" style="width:100%;">
                   <input type="range" min="1" max="5" value="3" class="slider" id="slider_input" onchange="slider_change()">
                 </div>
             </center>
-            <br>
-            <div class="col-md-1">Beginner</div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1">Advanced beginner</div>
+            </div>
+            <div class="col-md-1" style="font-size:18px">
+                <center>Something challenging</center>
+            </div>
             <div class="col-md-2"></div>
-            <div class="col-md-1">Intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Advanced intermediate</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-1">Expert</div>
+            </div>
 
-            </div>
-            <div class="col-md-3"></div>
-            </div>
+            <br>
+            <br>
+            <br>
+            <center>
+                <div class="loader" id="loading-image"></div>
+            </center>
+            <br>
 
             </div>
             <br><br>
@@ -214,4 +224,38 @@ function show_function()
             <br>
             <br>`
                 )
+    console.log("lang_chart: "+ languages)
+        let lang_chart = new Chart( "#lang_chart", { // or DOM element
+        data: {
+          labels: ["12am-3am", "3am-6am", "6am-9am", "9am-12pm",
+          "12pm-3pm", "3pm-6pm", "6pm-9pm", "9pm-12am"],
+
+          datasets: [
+            {
+              // label: "Yet Another", type: 'line',
+              values: [15, 20, -3, -15, 58, 12, -17, 37]
+            }
+          ],
+
+          // yMarkers: [{ label: "Marker", value: 70 }],
+          // yRegions: [{ label: "Region", start: -10, end: 50 }]
+        },
+
+        // title: "My Awesome Chart",
+        type: 'bar', // or 'bar', 'line', 'pie', 'percentage' ,'axis-mixed'
+        height: 250,
+        colors: ['purple', '#ffa3ef', 'red']
+      });
 }
+
+
+            // <br>
+            // <div class="col-md-1">Beginner</div>
+            // <div class="col-md-1"></div>
+            // <div class="col-md-1">Advanced beginner</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Intermediate</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Advanced intermediate</div>
+            // <div class="col-md-2"></div>
+            // <div class="col-md-1">Expert</div>

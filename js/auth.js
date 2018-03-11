@@ -77,7 +77,7 @@ $(document).ready(function () {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            get_info();
+            // get_info();
              // alert(JSON.stringify(user));
             // User is signed in.
 
