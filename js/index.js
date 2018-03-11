@@ -4,6 +4,26 @@ var token = localStorage.getItem('token');
 
 	// console.log(token);
 
+	var username = $("#username").val();
+	var password = $("#password").val();
+
+	var languages = []; // All langs of user
+	var sizes = []; // All lang sizes of user
+	var stars = 0; //All stars in reps of user
+	var forks = 0; //All forks in reps of user
+	var followers = 0;
+	//var commits = 0;
+	var repos = 0;
+	// $.ajax({
+	// 	type:'GET',
+	// 	url:'https://api.github.com/search/repositories?q=language:javascript&sort=stars&order=desc',
+	// 	data:{token:token},
+	// 	dataType:'json',
+	// 	success: function(data){
+	// 		// console.log('\n\nHERE\n\n')
+	// 		// console.log(data)
+	// 	}
+	// });
 var languages = []; // All langs of user
 var sizes = []; // All lang sizes of user
 var stars = 0; //All stars in reps of user
@@ -20,7 +40,7 @@ function get_info(){
 		dataType:'json',
 		success: function(data){
 
-			// console.log(data.res);
+			console.log(data.res);
 
 			var nos = [];
 			var total_stars = 0;

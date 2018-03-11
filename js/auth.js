@@ -99,13 +99,6 @@ $(document).ready(function () {
 
             //show_recommendations();
 
-            $(".rep_card").click(function () {
-                alert('clicked rep card');
-                var id = $(this).attr('id');
-                localStorage.clicked_rep = id;
-                window.open('../rep_details.html');
-            })
-
         } else {
             // No user is signed in.
             $('#cards').html('')
