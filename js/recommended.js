@@ -3,20 +3,20 @@ function show_recommendations(repo,language,ownerlist,starlist,forklist,desclist
 
     $('#filters').empty();
 
-    $('#filters').append(
-        `<div class="container">
+    // $('#filters').append(
+    //     `<div class="container">
 
-            <div class="row" style="font-size:20px">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"><input id="1" onchange="clicked(1)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Language</div>
-            <div class="col-md-2"><input id="2" onchange="clicked(2)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Stars</div>
-            <div class="col-md-2"><input id="3" onchange="clicked(3)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Contributors</div>
-            <div class="col-md-2"><input id="4" onchange="clicked(4)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Forks</div>
-            <div class="col-md-2"><input id="5" onchange="clicked(5)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Topic</div>
-            <div class="col-md-1"></div>
-            </div>
-        </div>`
-        )
+    //         <div class="row" style="font-size:20px">
+    //         <div class="col-md-1"></div>
+    //         <div class="col-md-2"><input id="1" onchange="clicked(1)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Language</div>
+    //         <div class="col-md-2"><input id="2" onchange="clicked(2)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Stars</div>
+    //         <div class="col-md-2"><input id="3" onchange="clicked(3)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Contributors</div>
+    //         <div class="col-md-2"><input id="4" onchange="clicked(4)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Forks</div>
+    //         <div class="col-md-2"><input id="5" onchange="clicked(5)" style="margin-top: -1px" type="checkbox" class="checkbox-inline" value="">Topic</div>
+    //         <div class="col-md-1"></div>
+    //         </div>
+    //     </div>`
+    //     )
 
         $('#cards').empty();
 
@@ -164,6 +164,8 @@ function show_function()
                 <center>
                     <h2>Apply filters</h2>
                 </center>
+                <br>
+                <div class="loader" id="loading-image"></div>
                 <br>
             </div>
             <div class="container">

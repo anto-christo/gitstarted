@@ -26,7 +26,6 @@ function get_data(){
 	// 		// console.log(data)
 	// 	}
 	// });
-
 	$.ajax({
 		type:'POST',
 		url:'/rep_info',
@@ -34,7 +33,7 @@ function get_data(){
 		dataType:'json',
 		success: function(data){
 
-			// console.log(data.res);
+			console.log(data.res);
 
 			var nos = [];
 			var total_stars = 0;
