@@ -3,12 +3,12 @@
 GitStarted is the perfect place for exploring Open Source Projects on GitHub.
 
 Get project recommendations based on your past Open Source contribution experience just by signing in with your GitHub credentials.
-Based on the languuages you have used, the number of stars and forks that you have on your owned/contributed repositories, etc, we show you a list of projects that meets your current level of expertise in Open Source development. 
+Based on the languuages you have used, the number of stars and forks that you have on your owned/contributed repositories, we show you a list of projects that meets your current level of expertise in Open Source development. 
 <br/><br/>
 
 **Features**
 
-* A bar graph illustarting the different programming languages used by you on you GitHub based Open Source projects.
+* A bar graph illustarting the different programming languages used by you in your GitHub based Open Source projects.
 
 ![Language Graph](/screenshots/graph.png?raw=true "Language Graph")<br/>
 
@@ -18,7 +18,7 @@ Based on the languuages you have used, the number of stars and forks that you ha
 ![Search Bar](/screenshots/search.JPG?raw=true "Search")<br/><br/>
 
 
-* Liked any of the projects that we recommended? Great! Just click on the project to explore more about it.
+* Liked any of the projects that we recommended? Great! Just click on the project to explore it even further.
 
   1. See a graph illustrating the various languages that has been used in the project.
   
