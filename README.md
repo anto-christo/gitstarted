@@ -32,7 +32,7 @@ Based on the languuages you have used, the number of stars and forks that you ha
   
     ![Issues](/screenshots/issues.JPG?raw=true "Issues")<br/><br/>
     
-**P.S - The website has not be hosted yet. In order to run the website on your localhost, please clone and do the following**
+**P.S - The website has not been hosted yet. In order to run the website on your localhost, please clone and do the following**
 1. Make sure you have Node.js and MongoDB installed on your system.
 2. Go to the root of the project and run `npm install` in command line to download the project dependencies.
 3. Start your Mongo server.
