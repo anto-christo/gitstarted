@@ -42,9 +42,11 @@ Based on the languages you have used, the number of stars and forks that you hav
     
 **Things to be done**
 * Enable slider functionality to let user select the level of projects within his experience range.
+* Store user experience details in database and directly access from there instead of calculating everytime to reduce the time taken for data retrieval.
+* Update user experience details in database at frequent intervals of user login.
+* Add more parameters to the recommended project search query to increase the accuracy of the results.
 * Add a tips page in order to help novice Open Source developers.
-* Add a trending repositories page.
-* Add more parameters to the recommended project search query to increase the accuracy of the results.<br/>
+* Add a trending repositories page.<br/>
 **Contributions in the form of above features or any other feature is always welcome !!**
 <br/><br/>
 
