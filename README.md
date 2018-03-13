@@ -2,8 +2,8 @@
 
 GitStarted is the perfect place for exploring Open Source Projects on GitHub.
 
-Get project recommendations based on your past Open Source contribution experience just by signing in with your GitHub credentials.
-Based on the languuages you have used, the number of stars and forks that you have on your owned/contributed repositories, we show you a list of projects that meets your current level of expertise in Open Source development. 
+Get project recommendations based on your past Open Source contributions just by signing in with your GitHub credentials.
+Based on the languages you have used, the number of stars and forks that you have on your owned/contributed repositories, we show you a list of projects that meets your current level of expertise in Open Source development. 
 <br/><br/>
 
 **Features**
@@ -44,8 +44,8 @@ Based on the languuages you have used, the number of stars and forks that you ha
 * Enable slider functionality to let user select the level of projects within his experience range.
 * Add a tips page in order to help novice Open Source developers.
 * Add a trending repositories page.
-* Add more parameters to the recommended project search query to increase the accuracy of the results.
-Contributions in the form of above features or any other feature is always welcome !!
+* Add more parameters to the recommended project search query to increase the accuracy of the results.<br/>
+**Contributions in the form of above features or any other feature is always welcome !!**
 <br/><br/>
 
 **Credits**
